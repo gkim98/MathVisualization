@@ -17,3 +17,48 @@
 .chartParent {
   display: flex;
 }
+
+/* styling for the settings form */
+.btn {
+  outline: none;
+  border: 2px solid #001A57;
+  font-size: 16px;
+  font-weight: 200px;
+  padding: 8px 20px;
+  background: white;
+  border-radius: 5px;
+
+  transition: .25s;
+}
+
+.btn:hover {
+  background: #001A57;
+  color: white;
+}
+
+select {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.settings {
+  width: 30%;
+  padding: 20px;
+  /* border: 2px solid #001A57; */
+  margin: 10px; 
+  margin-bottom: 0px;
+}
+
+.sinput, select {
+  margin-bottom: 10px;
+}
+
+input, select {
+  border: 1px solid #001A57;
+  padding-left: 5px;
+}
+
+input {
+  width: 100%;
+}

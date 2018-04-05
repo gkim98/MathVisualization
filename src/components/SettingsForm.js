@@ -31,18 +31,18 @@ class SettingsForm extends React.Component {
         return (
             <div className='settings'>
                 <form onSubmit={this.changeFilter}>
-                <div>
+                <div className='sinput'>
                     Start Year <input type='text' id='startYear'/>
                 </div>
-                <div>
+                <div className='sinput'>
                     End Year <input type='text' id='endYear'/>
                 </div>
-                    <select id='feature'>
+                    Feature <select id='feature'>
                         <option value='first'>1</option>
                         <option value='second'>2</option>
                         <option value='third'>3</option>
                     </select>
-                    <button type='submit'>Graph</button>
+                    <button type='submit' className='btn'>Graph</button>
                 </form>
             </div>
         );

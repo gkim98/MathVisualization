@@ -4,13 +4,6 @@ import * as d3 from 'd3';
 import courses from '../data/courses';
 import { connect } from 'react-redux';
 
-const data = [
-    {quarter: 1, earnings: 13000},
-    {quarter: 2, earnings: 16500},
-    {quarter: 3, earnings: 14250},
-    {quarter: 4, earnings: 19000}
-];
-
 class BarChart extends React.Component {
     constructor(props) {
         super(props);
@@ -39,6 +32,7 @@ class BarChart extends React.Component {
             })
             .entries(yearFilteredData);
 
+        console.log(seatsCount)
         return seatsCount;
     }
 
