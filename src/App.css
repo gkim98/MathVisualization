@@ -19,6 +19,10 @@
   display: flex;
 }
 
+.childrenParent {
+  display: flex;
+}
+
 /* styling for the settings form */
 .btn {
   outline: none;

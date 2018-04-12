@@ -9,7 +9,7 @@ import ChildBarChart from './ChildBarChart';
 import LineChart from './LineChart';
 import SettingsForm from './SettingsForm';
 import SettingsList from './SettingsList';
-import { countByFeature } from '../helpers/dataFilters';
+import { countByFeature, percentByFeature } from '../helpers/dataFilters';
 
 const DashboardPage = (props) => {
     console.log(props.events.isDisplayed)
@@ -22,8 +22,21 @@ const DashboardPage = (props) => {
             <BarChart />
             <LineChart />
         </div>
-        <div>
-            {props.events.isDisplayed && <ChildBarChart getData={countByFeature}/>}
+        <div className='childrenParent'>
+            {props.events.isDisplayed && 
+                <ChildBarChart 
+                    getData={countByFeature}
+                    xlabel='Subject Group'
+                    ylabel='# of Students'
+                />
+            }
+            {props.events.isDisplayed &&
+                <ChildBarChart 
+                    getData={percentByFeature}
+                    xlabel='Subject Group'
+                    ylabel='% of Total Students'
+                />
+            }
         </div>
     </div>)
 };

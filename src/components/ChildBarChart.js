@@ -22,14 +22,14 @@ class ChildBarChart extends React.Component {
                         style={{
                             tickLabels: {angle: 45}
                         }}
-                        
+                        label={this.props.xlabel}
                     />
                     <VictoryAxis
                         dependentAxis
-                       
+                        label={this.props.ylabel}
                     />
                     <VictoryBar 
-                        data={this.props.getData(this.props.events.year)}
+                        data={this.props.getData(this.props.events.year, this.props.filters.feature)}
                         x='key'
                         y='value'
                         style={{

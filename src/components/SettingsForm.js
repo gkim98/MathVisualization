@@ -38,9 +38,8 @@ class SettingsForm extends React.Component {
                     End Year <input type='text' id='endYear'/>
                 </div>
                     Feature <select id='feature'>
-                        <option value='first'>1</option>
-                        <option value='second'>2</option>
-                        <option value='third'>3</option>
+                        <option value='subjectGroup'>Subject Group</option>
+                        <option value='planGroup'>Plan Group</option>
                     </select>
                     <button type='submit' className='btn'>Graph</button>
                 </form>
