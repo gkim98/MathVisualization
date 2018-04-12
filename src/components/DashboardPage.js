@@ -3,13 +3,17 @@
 */
 
 import React from 'react';
+import { connect } from 'react-redux';
 import BarChart from './BarChart';
+import ChildBarChart from './ChildBarChart';
 import LineChart from './LineChart';
 import SettingsForm from './SettingsForm';
 import SettingsList from './SettingsList';
+import { countByFeature } from '../helpers/dataFilters';
 
-export default () => (
-    <div className='dashboardParent'>
+const DashboardPage = (props) => {
+    console.log(props.events.isDisplayed)
+    return (<div className='dashboardParent'>
         <div className='settingsParent'>
             <SettingsForm />
             <SettingsList />
@@ -18,5 +22,16 @@ export default () => (
             <BarChart />
             <LineChart />
         </div>
-    </div>
-);
+        <div>
+            {props.events.isDisplayed && <ChildBarChart getData={countByFeature}/>}
+        </div>
+    </div>)
+};
+
+const mapStateToProps = (state) => {
+    return {
+        events: state.events  
+    };
+};
+
+export default connect(mapStateToProps)(DashboardPage);

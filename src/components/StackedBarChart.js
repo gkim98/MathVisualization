@@ -59,11 +59,11 @@ class BarChart extends React.Component {
                         style={{
                             tickLabels: {angle: 45}
                         }}
-                        label="Year"
+                        
                     />
                     <VictoryAxis
                         dependentAxis
-                        label="# of Students"
+                       
                     />
                     <VictoryBar 
                         data={this.getData(this.props.filters.startYear, this.props.filters.endYear)}

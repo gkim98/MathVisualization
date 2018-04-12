@@ -9,12 +9,12 @@ export default (state=eventsReducerDefault, action) => {
         case 'CHANGE_IS_DISPLAYED':
             return {
                 ...state,
-                startYear: action.isDisplayed
+                isDisplayed: action.isDisplayed
             }
         case 'CHANGE_CHILD_YEAR':
             return {
                 ...state,
-                endYear: action.year
+                year: action.year
             }
         case 'CHANGE_CHILD_FEATURE':
             return {
