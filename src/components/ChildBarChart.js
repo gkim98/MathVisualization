@@ -4,7 +4,7 @@ import * as d3 from 'd3';
 import courses from '../data/courses';
 import { connect } from 'react-redux';
 
-class BarChart extends React.Component {
+class ChildBarChart extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -14,9 +14,9 @@ class BarChart extends React.Component {
     }
 
     /*
-        filters data based on:
-            1) start and end date
-            2) by # of seats (generalize later)
+        filters data based on year clicked by parent chart
+
+        CHANGE GET DATA FUNCTION
     */
     getData(startYear, endYear) {
         const yearFilteredData = courses.filter((course) => {
@@ -36,22 +36,12 @@ class BarChart extends React.Component {
         return seatsCount;
     }
 
-    /*
-        Victory Chart:
-            - animate prop gives transition graph settings change
-            - events:
-                - mouse over a bar will change it's coloring
-
-        specify an event key if you want to target other components
-    */
     render() {
-        console.log(this.props.filters.startYear)
         return (
             <div className='vicChart'>
                 <VictoryChart 
                     domainPadding={20}
                     animate={{duration: 500}}
-                    
                 >
                     <VictoryAxis
                         tickValues={[]}
@@ -73,27 +63,6 @@ class BarChart extends React.Component {
                                 fill: '#001A57'
                             }
                         }}
-                        events={[
-                            {
-                              target: 'data',
-                              eventHandlers: {
-                                onMouseOver: () => {
-                                  return {  
-                                    mutation: (props) => {
-                                      return {style: {fill: 'tomato'}};
-                                    }
-                                  }
-                                },
-                                onMouseOut: () => {
-                                  return {
-                                    mutation: (props) => {
-                                      return null;
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          ]}
                     />
                 </VictoryChart>
             </div>
@@ -103,8 +72,8 @@ class BarChart extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        filters: state.filters  
+        events: state.events  
     };
 };
 
-export default connect(mapStateToProps)(BarChart);
+export default connect(mapStateToProps)(ChildBarChart);
