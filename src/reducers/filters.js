@@ -1,7 +1,7 @@
 const filterReducerDefault = {
-    startYear: 0,
-    endYear: 0,
-    feature: ''
+    startYear: 2005,
+    endYear: 2017,
+    feature: 'subjectGroup'
 }
 
 export default (state=filterReducerDefault, action) => {

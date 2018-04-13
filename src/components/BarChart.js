@@ -32,7 +32,6 @@ class BarChart extends React.Component {
             })
             .entries(yearFilteredData);
 
-        console.log(seatsCount)
         return seatsCount;
     }
 
