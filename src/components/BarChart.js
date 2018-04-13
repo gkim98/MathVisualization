@@ -79,19 +79,31 @@ class BarChart extends React.Component {
                               eventHandlers: {
                                 // highlights bar that mouse is hovering over
                                 onMouseOver: (props) => {
-                                  return {  
-                                    mutation: (props) => {
-                                      return {style: {fill: 'tomato'}};
-                                    }
-                                  }
+                                  return [{  
+                                      mutation: (props) => {
+                                        return {style: {fill: 'tomato'}};
+                                      }
+                                    },
+                                    {
+                                      target: 'labels',
+                                      mutation: (props) => {
+                                        return {text: props.datum.y};
+                                      }
+                                    }]
                                 },
                                 // removes highlight when mouse leaves
                                 onMouseOut: () => {
-                                  return {
+                                  return [{
                                     mutation: (props) => {
                                       return null;
                                     }
-                                  }
+                                  },
+                                  {
+                                      target: 'labels',
+                                      mutation: (props) => {
+                                          return null;
+                                      }
+                                  }]
                                 },
                                 // clicking on bar -> child bar chart for that year
                                 onClick: () => {

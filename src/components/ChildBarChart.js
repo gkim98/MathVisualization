@@ -37,6 +37,31 @@ class ChildBarChart extends React.Component {
                                 fill: '#001A57'
                             }
                         }}
+                        events={[
+                            {
+                              target: 'data',
+                              eventHandlers: {
+                                // gives y value
+                                onMouseOver: (props) => {
+                                  return [{
+                                      target: 'labels',
+                                      mutation: (props) => {
+                                        return {text: props.datum.y};
+                                      }
+                                    }]
+                                },
+                                // removes y value
+                                onMouseOut: () => {
+                                  return [{
+                                    target: 'labels',
+                                      mutation: (props) => {
+                                        return null;
+                                      }
+                                  }]
+                                }
+                              }
+                            }
+                          ]}
                     />
                 </VictoryChart>
             </div>

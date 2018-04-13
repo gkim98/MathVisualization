@@ -29,13 +29,6 @@ const DashboardPage = (props) => {
                     ylabel='# of Students'
                 />
             }
-            {props.events.isDisplayed &&
-                <ChildBarChart 
-                    getData={getYearData}
-                    xlabel='Subject Group'
-                    ylabel='% of Total Students'
-                />
-            }
         </div>
     </div>)
 };
