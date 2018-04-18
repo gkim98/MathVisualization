@@ -17,10 +17,21 @@
 
 .chartParent {
   display: flex;
+  background-color: rgb(230, 230, 230);
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 20px;
+  border-radius: 20px;
 }
 
 .childrenParent {
   display: flex;
+  background-color: rgb(230, 230, 230);
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 20px;
+  border-radius: 20px;
+  
 }
 
 /* styling for the settings form */
@@ -82,4 +93,20 @@ input, select {
 
 input {
   width: 100%;
+}
+
+.test {
+  width: 50px;
+  height: 100%;
+  background-color: purple;
+}
+
+.footer {
+  color: white;
+  width: 100%;
+  background: #001A57;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: center;
+  margin-top: 20px;
 }

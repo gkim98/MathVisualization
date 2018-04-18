@@ -1,5 +1,5 @@
 import React from 'react';
-import { VictoryBar, VictoryChart, VictoryAxis } from 'victory';
+import { VictoryBar, VictoryChart, VictoryAxis, VictoryLabel, VictoryTheme } from 'victory';
 import * as d3 from 'd3';
 import courses from '../data/courses';
 import { connect } from 'react-redux';
@@ -51,18 +51,22 @@ class BarChart extends React.Component {
                 <VictoryChart 
                     domainPadding={20}
                     animate={{duration: 500}}
+                    theme={VictoryTheme.material}
                     
                 >
                     <VictoryAxis
                         tickValues={[]}
                         style={{
-                            tickLabels: {angle: 45}
+                            tickLabels: {
+                                angle: 45,
+                                textAnchor: 'start'
+                            }
                         }}
-                        label="Year"
+                        
                     />
                     <VictoryAxis
                         dependentAxis
-                        label="# of Students"
+                        
                     />
                     <VictoryBar 
                         data={this.getData(this.props.filters.startYear, this.props.filters.endYear)}

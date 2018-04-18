@@ -1,6 +1,7 @@
 import React from 'react';
-import { VictoryLine, VictoryChart, VictoryAxis } from 'victory';
+import { VictoryLine, VictoryChart, VictoryAxis, VictoryLabel } from 'victory';
 import * as d3 from 'd3';
+
 import courses from '../data/courses';
 import { connect } from 'react-redux';
 
@@ -47,11 +48,11 @@ class LineChart extends React.Component {
                         style={{
                             tickLabels: {angle: 45}
                         }}
-                        label='Year'
+                        
                     />
                     <VictoryAxis
                         dependentAxis
-                        label='# of Students'
+                        
                     />
                     <VictoryLine
                         data={this.getData(this.props.filters.startYear, this.props.filters.endYear)}

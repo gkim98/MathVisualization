@@ -1,13 +1,10 @@
 import React from 'react';
-import { VictoryBar, VictoryChart, VictoryAxis } from 'victory';
+import { VictoryBar, VictoryChart, VictoryAxis, VictoryLabel } from 'victory';
 import { connect } from 'react-redux';
 
 class ChildBarChart extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            
-        };
     }
 
     render() {
@@ -20,13 +17,16 @@ class ChildBarChart extends React.Component {
                     <VictoryAxis
                         tickValues={[]}
                         style={{
-                            tickLabels: {angle: 45}
+                            tickLabels: {
+                                angle: 45,
+                                textAnchor: 'start'
+                            }
                         }}
-                        label={this.props.xlabel}
+                        // label={this.props.xlabel}
                     />
                     <VictoryAxis
                         dependentAxis
-                        label={this.props.ylabel}
+                        // label={this.props.ylabel}
                     />
                     <VictoryBar 
                         data={this.props.getData(this.props.events.year, this.props.filters.feature)}

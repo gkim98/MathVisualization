@@ -21,6 +21,11 @@ export default (state=filterReducerDefault, action) => {
                 ...state,
                 feature: action.feature
             }
+        case 'SET_ASPECT':
+            return {
+                ...state,
+                aspect: action.aspect
+            }
         default:
             return state;
     }

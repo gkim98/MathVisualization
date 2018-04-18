@@ -4,7 +4,7 @@ import AppRouter from './routers/AppRouter'
 import configureStore from './store/configureStore';
 import { addSetting } from './actions/settings';
 import { setStartYear, setEndYear, setFeature } from './actions/filters';
-import './App.css';
+import './App2.css';
 
 const store = configureStore();
 

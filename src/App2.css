@@ -1,0 +1,40 @@
+body {
+    background-color: #001A57;
+}
+
+.half-charts {
+    width: 50%;
+    background-color: white;
+    border-radius: 10px;
+    margin: 10px;
+    margin-right: 0;
+}
+
+.column-parent {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+}
+
+.aspect {
+    text-align: center;
+}
+
+.flexh {
+    display: flex;
+}
+
+.flexc {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+}
+
+.white-placeholder {
+    background-color: white;
+    border-radius: 10px;
+    height: 50%;
+    margin: 10px;
+    margin-right: 0;
+    margin-top: 0;
+}

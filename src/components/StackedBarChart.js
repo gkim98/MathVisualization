@@ -1,113 +1,66 @@
 import React from 'react';
-import { VictoryBar, VictoryChart, VictoryAxis } from 'victory';
-import * as d3 from 'd3';
-import courses from '../data/courses';
+import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme, VictoryStack } from 'victory';
 import { connect } from 'react-redux';
-import { changeIsDisplayed, changeYearDisplayed, changeFeatureDisplayed } from '../actions/events';
+import { chooseData, yearFilter, yearTickLabels } from '../helpers/getData';
 
-class BarChart extends React.Component {
+class StackedBarChart extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            
-        };
     }
 
-    /*
-        filters data based on:
-            1) start and end date
-            2) by # of seats (generalize later)
-    */
-    getData = (startYear, endYear) => {
-        const yearFilteredData = courses.filter((course) => {
-                return course.year >= startYear 
-                && course.year <= endYear
-            }
-        )
+    getData = () => {
+        const fullData = chooseData(this.props.filters.feature);
 
-        const seatsCount = d3.nest()
-            .key((d) => (d.year))
-            .rollup((v) => {
-                return d3.sum(v, (c) => c.seats)
-            })
-            .entries(yearFilteredData);
-
-        console.log(seatsCount)
-        return seatsCount;
+        return yearFilter(
+            this.props.filters.startYear,
+            this.props.filters.endYear,
+            fullData
+        );
     }
 
-    /*
-        Victory Chart:
-            - animate prop gives transition graph settings change
-            - events:
-                - mouse over a bar will change it's coloring
-
-        specify an event key if you want to target other components
-        create a map that creates victory bars for each feature
-        each will have the same event
-    */
     render() {
+        console.log('stacked rerendered');
+        console.log(yearTickLabels(
+            this.props.filters.startYear,
+            this.props.filters.endYear
+        ));
         return (
-            <div className='vicChart'>
+            <div>
                 <VictoryChart 
                     domainPadding={20}
                     animate={{duration: 500}}
-                    
+                    theme={VictoryTheme.material}
                 >
                     <VictoryAxis
-                        tickValues={[]}
+                        tickValues={yearTickLabels(
+                            this.props.filters.startYear,
+                            this.props.filters.endYear
+                        )}
                         style={{
-                            tickLabels: {angle: 45}
+                            tickLabels: {angle: 45},
+                            grid: {
+                                stroke: 'none'
+                            }
                         }}
                         
                     />
                     <VictoryAxis
                         dependentAxis
-                       
                     />
-                    <VictoryBar 
-                        data={this.getData(this.props.filters.startYear, this.props.filters.endYear)}
-                        x='key'
-                        y='value'
-                        style={{
-                            data: {
-                                fill: '#001A57'
-                            }
-                        }}
-                        events={[
-                            {
-                              target: 'data',
-                              eventHandlers: {
-                                // highlights bar that mouse is hovering over
-                                onMouseOver: (props) => {
-                                  return {  
-                                    mutation: (props) => {
-                                      return {style: {fill: 'tomato'}};
-                                    }
-                                  }
-                                },
-                                // removes highlight when mouse leaves
-                                onMouseOut: () => {
-                                  return {
-                                    mutation: (props) => {
-                                      return null;
-                                    }
-                                  }
-                                },
-                                // clicking on bar -> child bar chart for that year
-                                onClick: () => {
-                                  return {
-                                    mutation: (props) => {
-                                      const clickedYear = props.datum.x;
-                                      this.props.dispatch(changeIsDisplayed(true));
-                                      this.props.dispatch(changeYearDisplayed(clickedYear));
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          ]}
-                    />
+                    <VictoryStack>
+                    {
+                        this.getData().map((featData) => {
+                            return (
+                                <VictoryBar
+                                    data={featData.values}
+                                    x='key'
+                                    y='value'
+                                    key={featData['key']}
+                                />
+                            )
+                        })
+                    }
+                    </VictoryStack>
                 </VictoryChart>
             </div>
         );
@@ -117,8 +70,8 @@ class BarChart extends React.Component {
 const mapStateToProps = (state) => {
     return {
         filters: state.filters,
-        events: state.events  
+        events: state.filters
     };
 };
 
-export default connect(mapStateToProps)(BarChart);
+export default connect(mapStateToProps)(StackedBarChart);

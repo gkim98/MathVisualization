@@ -1,11 +1,15 @@
 import React from 'react';
+import HorizontalScroll from 'react-scroll-horizontal';
 
 /*
     displays saved settings for reupload
 */
 
-export default () => (
-    <div className='settingsList'>
-        
-    </div>
-);
+export default () => {
+    
+    return (
+        <div className='settingsList'>
+            
+        </div>
+    )
+};

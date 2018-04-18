@@ -16,3 +16,9 @@ export const setFeature = (feature = '') => ({
     type: 'SET_FEATURE',
     feature
 })
+
+// sector in the pie chart
+export const setAspect = (aspect = '') => ({
+    type: 'SET_ASPECT',
+    aspect
+})
