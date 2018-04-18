@@ -87,14 +87,18 @@ export const yearFilter = (startYear, endYear, data) => {
     })
 }
 
-// get tick labels
+// get year tick labels
 const years = [];
 for(let i = 2005; i < 2018; i++) {
     years.push(i)
 };
 
 export const yearTickLabels = (startYear, endYear) => {
-    return years.filter((year) => {
+    const filteredYears = years.filter((year) => {
         return year >= startYear && year <= endYear;
+    });
+
+    return filteredYears.map((year) => {
+        return String(year);
     });
 }
