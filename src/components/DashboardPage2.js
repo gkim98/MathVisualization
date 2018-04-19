@@ -5,9 +5,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import BarChart from './BarChart';
-import MultipleLineChart from './MultipleLineChart';
 import SettingsForm from './SettingsForm';
 import StackedBarChart from './StackedBarChart';
+import ChildBarChart from './ChildBarChart';
+import LineChart from './LineChart';
 import PieChart from './PieChart';
 import Legend from './Legend';
 
@@ -37,10 +38,10 @@ const DashboardPage2 = (props) => {
                 props.events.isDisplayed &&
                 (<div className='flexh'>
                     <div className='third-white'>
-                        <BarChart />
+                        <LineChart />
                     </div>
                     <div className='third-white'>
-                        hi
+                        <ChildBarChart />
                     </div>
                     <div className='third-white' id='right'>
                         hi

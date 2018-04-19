@@ -21,3 +21,9 @@ export const changeFeatureDisplayed = (feature = '') => ({
     type: 'CHANGE_CHILD_FEATURE',
     feature
 });
+
+// changes the aspect that the line graph displays
+export const changeAspectDisplayed = (aspect = '') => ({
+    type: 'CHANGE_CHILD_ASPECT',
+    aspect
+});

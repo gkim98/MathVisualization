@@ -1,9 +1,10 @@
 import React from 'react';
-import { VictoryLine, VictoryChart, VictoryAxis, VictoryLabel } from 'victory';
+import { VictoryLine, VictoryChart, VictoryAxis, VictoryLabel, VictoryTheme } from 'victory';
 import * as d3 from 'd3';
-
 import courses from '../data/courses';
 import { connect } from 'react-redux';
+import { lineData } from '../helpers/getData';
+
 
 class LineChart extends React.Component {
     constructor(props) {
@@ -16,9 +17,10 @@ class LineChart extends React.Component {
 
     render() {
         return (
-            <div className='vicChart'>
+            <div>
                 <VictoryChart
                     animate={{duration: 500}}
+                    theme={VictoryTheme.material}
                 >
                     <VictoryAxis
                         style={{
@@ -29,7 +31,9 @@ class LineChart extends React.Component {
                         dependentAxis
                     />
                     <VictoryLine
-                        data={this.getData(this.props.filters.startYear, this.props.filters.endYear)}
+                        data={lineData(this.props.events.aspect, this.props.filters.feature)}
+                        x='key'
+                        y='value'
                         style={{
                             data: {
                                 stroke: '#001A57'
@@ -44,7 +48,8 @@ class LineChart extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        filters: state.filters  
+        filters: state.filters,
+        events: state.events  
     };
 };
 

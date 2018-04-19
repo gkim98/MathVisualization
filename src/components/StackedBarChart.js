@@ -2,7 +2,7 @@ import React from 'react';
 import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme, VictoryStack } from 'victory';
 import { connect } from 'react-redux';
 import { chooseData, yearFilter, yearTickLabels } from '../helpers/getData';
-import { changeIsDisplayed, changeYearDisplayed } from '../actions/events';
+import { changeIsDisplayed, changeYearDisplayed, changeAspectDisplayed } from '../actions/events';
 
 class StackedBarChart extends React.Component {
     constructor(props) {
@@ -11,7 +11,7 @@ class StackedBarChart extends React.Component {
 
     getData = () => {
         const fullData = chooseData(this.props.filters.feature);
-
+        console.log(fullData);
         return yearFilter(
             this.props.filters.startYear,
             this.props.filters.endYear,
@@ -21,10 +21,6 @@ class StackedBarChart extends React.Component {
 
     render() {
         console.log('stacked rerendered');
-        console.log(yearTickLabels(
-            this.props.filters.startYear,
-            this.props.filters.endYear
-        ));
         return (
             <div>
                 <VictoryChart 
@@ -63,9 +59,12 @@ class StackedBarChart extends React.Component {
                                           onClick: () => {
                                             return {
                                               mutation: (props) => {
+                                                console.log(props)
+                                                console.log(featData['key'])
                                                 const clickedYear = props.datum.x;
                                                 this.props.dispatch(changeIsDisplayed(true));
                                                 this.props.dispatch(changeYearDisplayed(clickedYear));
+                                                this.props.dispatch(changeAspectDisplayed(featData['key']));
                                               }
                                             }
                                           }

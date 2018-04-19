@@ -21,6 +21,11 @@ export default (state=eventsReducerDefault, action) => {
                 ...state,
                 feature: action.feature
             }
+        case 'CHANGE_CHILD_ASPECT':
+            return {
+                ...state,
+                aspect: action.aspect
+            }
         default:
             return state;
     }
