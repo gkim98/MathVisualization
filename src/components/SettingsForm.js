@@ -21,8 +21,8 @@ class SettingsForm extends React.Component {
         let startYear = document.getElementById('startYear').value;
         let endYear = document.getElementById('endYear').value;
         let feature = document.getElementById('feature').value;
-        this.props.dispatch(setStartYear(startYear));
-        this.props.dispatch(setEndYear(endYear));
+        if(startYear != '') this.props.dispatch(setStartYear(startYear));
+        if(endYear != '') this.props.dispatch(setEndYear(endYear));
         this.props.dispatch(setFeature(feature));
         console.log(startYear, endYear, feature);
     }

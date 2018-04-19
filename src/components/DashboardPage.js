@@ -1,36 +1,54 @@
 /*
-    Parent component for the dashboard page
+    dashboard with UI
 */
 
 import React from 'react';
 import { connect } from 'react-redux';
-import BarChart from './BarChart';
+import SettingsForm from './SettingsForm';
+import StackedBarChart from './StackedBarChart';
 import ChildBarChart from './ChildBarChart';
 import LineChart from './LineChart';
-import SettingsForm from './SettingsForm';
-import SettingsList from './SettingsList';
-import { getYearData } from '../helpers/dataFilters';
+import PieChart from './PieChart';
+import Legend from './Legend';
 
 const DashboardPage = (props) => {
-    return (<div className='dashboardParent'>
-        <div className='settingsParent'>
-            <SettingsForm />
-            <SettingsList />
-        </div>
-        <div className='chartParent'>
-            <BarChart />
-            <LineChart />
-        </div>
-        <div className='childrenParent'>
-            {props.events.isDisplayed && 
-                <ChildBarChart 
-                    getData={getYearData}
-                    xlabel='Subject Group'
-                    ylabel='# of Students'
-                />
+    return (
+        <div>
+            <div className='flexh'>
+                <div className='half-charts'>
+                    <StackedBarChart />
+                </div>
+                <div className='flexc'>
+                    <div className='flexh'>
+                        <div className='half-charts'>
+                            <PieChart/>
+                        </div>
+                        <div className='half-charts'>
+                            <Legend />
+                        </div>
+                    </div>
+                    <div className='white-placeholder'>
+                        <SettingsForm className='form'/>
+                    </div>
+                </div>
+            </div>
+            
+            {
+                props.events.isDisplayed &&
+                (<div className='flexh'>
+                    <div className='third-white'>
+                        <LineChart />
+                    </div>
+                    <div className='third-white'>
+                        <ChildBarChart />
+                    </div>
+                    <div className='third-white' id='right'>
+                        hi
+                    </div>
+                </div>)
             }
         </div>
-    </div>)
+    )
 };
 
 const mapStateToProps = (state) => {
