@@ -20,6 +20,15 @@ class LineChart extends React.Component {
                     animate={{duration: 500}}
                     theme={VictoryTheme.material}
                 >
+                    <VictoryLabel
+                        text={`Seats vs. Year (${this.props.events.aspect})`}
+                        dy={20}
+                        dx={50}
+                        style={{
+                            fontSize: 15,
+                            fontFamily: 'Verdana'
+                        }}
+                    />
                     <VictoryAxis
                         style={{
                             tickLabels: {angle: 45}

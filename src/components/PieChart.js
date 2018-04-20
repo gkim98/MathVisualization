@@ -13,7 +13,15 @@ class PieChart extends React.Component {
         console.log('pie rerendered');
         return (
             <div>
-                <h1 className='aspect'>{this.props.filters.aspect}</h1>
+                {
+                    !!this.props.filters.aspect ? 
+                    (<div className='aspContainer'>
+                        <span className='aspLabel'>{this.props.filters.aspect}</span>
+                    </div>) : 
+                    (<div>
+                        <span className='placeholder'>placeholder</span>
+                    </div>)
+                }
                 <VictoryPie
                     data={getPie(this.props.filters.feature)}
                     x='key'
@@ -57,7 +65,9 @@ class PieChart extends React.Component {
                             onClick: () => {
                               return [{
                                 mutation: (props) => {
-                                  return {style: {fill: '#808080'}};
+                                  return {style: {
+                                      fill: '#808080'
+                                    }};
                                 }
                               }]
                             }

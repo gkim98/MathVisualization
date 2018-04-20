@@ -1,5 +1,5 @@
 import React from 'react';
-import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme, VictoryStack } from 'victory';
+import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme, VictoryStack, VictoryLabel } from 'victory';
 import { connect } from 'react-redux';
 import { chooseData, yearFilter, yearTickLabels } from '../helpers/getData';
 import { changeIsDisplayed, changeYearDisplayed, changeAspectDisplayed } from '../actions/events';
@@ -27,6 +27,15 @@ class StackedBarChart extends React.Component {
                     domainPadding={20}
                     theme={VictoryTheme.material}
                 >
+                    <VictoryLabel
+                        text={`Seats vs. Year`}
+                        dy={20}
+                        dx={50}
+                        style={{
+                            fontSize: 15,
+                            fontFamily: 'Verdana'
+                        }}
+                    />
                     <VictoryAxis
                         tickValues={yearTickLabels(
                             this.props.filters.startYear,

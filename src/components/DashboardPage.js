@@ -16,21 +16,16 @@ const DashboardPage = (props) => {
     return (
         <div>
             <div className='flexh'>
-                <div className='half-charts'>
+                <div className='for-stacked'>
                     <StackedBarChart />
                 </div>
-                <div className='flexc'>
-                    <div className='flexh'>
-                        <div className='half-charts'>
-                            <PieChart/>
-                        </div>
-                        <div className='half-charts'>
-                            <Legend />
-                        </div>
+                <div className = 'flexc'>
+                    <div className='pie-chart'>
+                        <PieChart/>
                     </div>
-                    <div className='white-placeholder'>
+                    <div className='form-container'>
                         <SettingsForm className='form'/>
-                    </div>
+                    </div>  
                 </div>
             </div>
             

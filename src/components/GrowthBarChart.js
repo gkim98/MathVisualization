@@ -17,6 +17,15 @@ class GrowthBarChart extends React.Component {
                     animate={{duration: 500}}
                     theme={VictoryTheme.material}
                 >
+                    <VictoryLabel
+                        text={`% Growth for ${this.props.events.year}`}
+                        dy={20}
+                        dx={50}
+                        style={{
+                            fontSize: 15,
+                            fontFamily: 'Verdana'
+                        }}
+                    />
                     <VictoryAxis
                         style={{
                             grid: {

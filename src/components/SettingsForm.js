@@ -32,16 +32,26 @@ class SettingsForm extends React.Component {
             <div className='settings'>
                 <form onSubmit={this.changeFilter}>
                 <div className='sinput'>
-                    Start Year <input type='text' id='startYear'/>
+                    <span>Start Year</span> 
+                    <input type='text' id='startYear'/>
                 </div>
                 <div className='sinput'>
-                    End Year <input type='text' id='endYear'/>
+                    <span>End Year</span> 
+                    <input type='text' id='endYear'/>
                 </div>
-                    Feature <select id='feature'>
+                <div className='sinput'>
+                    <span>Feature</span> 
+                    
+                    <div>
+                    <select id='feature'>
                         <option value='subjectGroup'>Subject Group</option>
                         <option value='planGroup'>Plan Group</option>
                     </select>
-                    <button type='submit' className='btn'>Graph</button>
+                    </div>
+                </div>
+                <div className='sinput'>
+                    <button type='submit' className='graph-btn'>Graph</button>
+                    </div>
                 </form>
             </div>
         );
