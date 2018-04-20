@@ -1,7 +1,5 @@
 import React from 'react';
 import { VictoryLine, VictoryChart, VictoryAxis, VictoryLabel, VictoryTheme } from 'victory';
-import * as d3 from 'd3';
-import courses from '../data/courses';
 import { connect } from 'react-redux';
 import { lineData } from '../helpers/getData';
 

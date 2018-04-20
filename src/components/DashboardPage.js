@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import SettingsForm from './SettingsForm';
 import StackedBarChart from './StackedBarChart';
 import ChildBarChart from './ChildBarChart';
+import GrowthBarChart from './GrowthBarChart';
 import LineChart from './LineChart';
 import PieChart from './PieChart';
 import Legend from './Legend';
@@ -43,7 +44,7 @@ const DashboardPage = (props) => {
                         <ChildBarChart />
                     </div>
                     <div className='third-white' id='right'>
-                        hi
+                        <GrowthBarChart />
                     </div>
                 </div>)
             }

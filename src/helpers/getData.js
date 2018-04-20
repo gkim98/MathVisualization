@@ -112,3 +112,33 @@ export const childBarData = (year, feature) => {
 
     return aspectCount;
 }
+
+// converts array of objects to an object
+const arrayToObject = (arr, keyField) => Object.assign({},
+    ...arr.map(item => ({[item[keyField]]: item})));
+
+// get growth bar chart data
+export const growthData = (year, feature) => {
+    const currentData = arrayToObject(childBarData(year, feature), 'key');
+    if(year == 2005) return null;
+    const lastData = arrayToObject(childBarData(year - 1, feature), 'key');
+
+    const changeData = {};
+    const currentAspects = Object.keys(currentData);
+    currentAspects.forEach(function(aspect) {
+        if(!!!lastData[aspect]) return
+        changeData[aspect] = 
+            ((currentData[aspect].value - lastData[aspect].value) / lastData[aspect].value * 100)
+            .toFixed(2);
+    });
+
+    const changeArray = [];
+    const filteredAspects = Object.keys(changeData);
+    filteredAspects.forEach(function(aspect) {
+        changeArray.push({
+            x: aspect,
+            y: parseInt(changeData[aspect])
+        });
+    });
+    return(changeArray);
+}
