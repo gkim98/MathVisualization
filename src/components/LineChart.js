@@ -29,7 +29,7 @@ class LineChart extends React.Component {
                         dependentAxis
                     />
                     <VictoryLine
-                        data={lineData(this.props.events.aspect, this.props.filters.feature)}
+                        data={lineData(this.props.events.aspect, this.props.filters.feature, this.props.filters.startYear, this.props.filters.endYear)}
                         x='key'
                         y='value'
                         style={{

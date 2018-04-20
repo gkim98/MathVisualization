@@ -85,12 +85,16 @@ export const lineData = (aspect, feature, startYear, endYear) => {
         return course[feature] == aspect;
     });
 
+    const yearFilteredData = aspectFilteredData.filter((d) => {
+        return d.year >= startYear && d.year <= endYear;
+    });
+
     const seatCount = d3.nest()
         .key(function(d) { return d['year'] })
         .rollup(function(v) { 
             return d3.sum(v, function(d) { return d.seats }) 
         })
-        .entries(aspectFilteredData);
+        .entries(yearFilteredData);
 
     return seatCount;
 }
